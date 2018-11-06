@@ -6,8 +6,15 @@ initialize_calendar = function() {
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay'
+        // right: 'listDay,month,agendaWeek,agendaDay,listWeek'
+        right: 'listDay,listWeek,month'
       },
+      
+      views: {
+        listDay: { buttonText: 'list day' },
+        listWeek: { buttonText: 'list week' }
+      },
+      
       selectable: true,
       selectHelper: true,
       editable: true,
@@ -24,7 +31,7 @@ initialize_calendar = function() {
 
         calendar.fullCalendar('unselect');
       },
-
+//  this allows changed events to be stored and shown after reloading (8)
       eventDrop: function(event, delta, revertFunc) {
         event_data = { 
           event: {
